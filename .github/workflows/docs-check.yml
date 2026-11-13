@@ -6,6 +6,9 @@ on:
 
 jobs:
   check-docs:
+    # Match the unchanged reusable job permission; this caller disables auto-generation.
+    permissions:
+      contents: write
     uses: ./.github/workflows/check-required-docs.yml
     with:
       auto_create: false
