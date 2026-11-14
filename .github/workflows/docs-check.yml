@@ -1,11 +1,14 @@
 name: Documentation Check
 
+# Hosted execution is an optional manual fallback; do not dispatch paid runs by default.
 on:
-  pull_request:
-    branches: [main, master]
-  push:
-    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
   check-docs:
-    uses: PhDNetworks/claude-toolkit/.github/workflows/check-required-docs.yml@main
+    # Match the unchanged reusable job permission; this caller disables auto-generation.
+    permissions:
+      contents: write
+    uses: ./.github/workflows/check-required-docs.yml
+    with:
+      auto_create: false

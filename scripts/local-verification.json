@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "repo": "PhDNetworks-Systems/claude-toolkit",
+  "target_ref": "refs/remotes/origin/main",
+  "require_clean_ignored_start": true,
+  "tool_versions": {
+    "git": "git --version",
+    "python": "python3 --version"
+  },
+  "jobs": [
+    {
+      "id": "required-docs",
+      "source": ".github/workflows/docs-check.yml -> local check-required-docs.yml, applicable presence checks with auto_create:false; additional nonempty guard",
+      "commands": [
+        "python3 scripts/check-required-docs.py"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30
+    }
+  ]
+}
